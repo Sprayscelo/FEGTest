@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { PublicRoute } from "./public.routes";
 import { PrivateRoute } from "./private.routes";

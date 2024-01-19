@@ -9,8 +9,7 @@ const { Navigator, Screen } = createNativeStackNavigator();
 
 export type PublicRoute = {
   Login: undefined;
-  // ListCostumers: undefined;
-  // CreateCostumer: undefined;
+  PrivateRoute: undefined;
 };
 
 export type PublicRoutes = NativeStackNavigationProp<PublicRoute>;

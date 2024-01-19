@@ -12,7 +12,7 @@ type LoginProps = {
 };
 
 export type AuthData = {
-  login: ({ email, password }: LoginProps) => void;
+  login: ({ email, password }: LoginProps) => boolean;
   logout: () => void;
   isLogged: boolean;
 };
@@ -29,7 +29,9 @@ export function AuthProvider({ children }: AuthProps) {
   function login({ email, password }: LoginProps) {
     if (email === "marcelo_marchioro@hotmail.com" && password === "marcelo") {
       setIsLogged(true);
+      return true;
     }
+    return false;
   }
 
   function logout() {
