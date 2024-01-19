@@ -1,5 +1,7 @@
 import { View, ActivityIndicator } from "react-native";
 
+import { styles } from "./style";
+
 interface LoadingProps {
   color?: string;
   size?: number | "small" | "large";
@@ -7,7 +9,7 @@ interface LoadingProps {
 
 export function Loading({ size, color, ...props }: LoadingProps) {
   return (
-    <View>
+    <View style={styles.container}>
       <ActivityIndicator color={color} size={size} {...props} />
     </View>
   );
