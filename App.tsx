@@ -1,4 +1,4 @@
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from "react-native";
 import { StyleSheet } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
@@ -13,11 +13,15 @@ import { AuthProvider } from "./src/context/auth";
 
 import { useFonts } from "expo-font";
 import { PressStart2P_400Regular } from "@expo-google-fonts/press-start-2p";
-import { Poppins_400Regular } from "@expo-google-fonts/poppins";
+import {
+  Poppins_400Regular,
+  Poppins_600SemiBold,
+} from "@expo-google-fonts/poppins";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
+    Poppins_600SemiBold,
     PressStart2P_400Regular,
   });
 
@@ -25,7 +29,7 @@ export default function App() {
     <Loading color={theme.colors.primary} size={60} />
   ) : (
     <NavigationContainer>
-      <StatusBar />
+      <StatusBar backgroundColor={"#fff"} barStyle={"dark-content"} />
       <AuthProvider>
         <Routes />
       </AuthProvider>
