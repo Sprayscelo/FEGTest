@@ -5,12 +5,13 @@ import { CustomText } from "@components/Text/text";
 interface ButtonProps extends TouchableOpacityProps {
   color?: string;
   width: string;
+  text: string;
 }
 
-export function CustomButton({ color, width, ...props }: ButtonProps) {
+export function CustomButton({ color, width, text, ...props }: ButtonProps) {
   return (
     <Button {...props} color={color} width={width}>
-      <CustomText text="Entrar" color="#FFF" fontSize="20.168px"></CustomText>
+      <CustomText text={text} color="#FFF" fontSize="20.168px"></CustomText>
     </Button>
   );
 }
