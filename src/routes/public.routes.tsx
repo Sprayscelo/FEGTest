@@ -5,14 +5,12 @@ import {
 } from "@react-navigation/native-stack";
 import { Login } from "@screens/Login/login";
 
-const { Navigator, Screen } = createNativeStackNavigator();
-
 export type PublicRoute = {
   Login: undefined;
-  PrivateRoute: undefined;
 };
+export type StackNavigatorRoutesProps = NativeStackNavigationProp<PublicRoute>;
 
-export type PublicRoutes = NativeStackNavigationProp<PublicRoute>;
+const { Navigator, Screen } = createNativeStackNavigator<PublicRoute>();
 
 export function PublicRoute() {
   return (

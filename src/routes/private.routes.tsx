@@ -1,25 +1,28 @@
 import React from "react";
 import {
-  createNativeStackNavigator,
   NativeStackNavigationProp,
+  createNativeStackNavigator,
 } from "@react-navigation/native-stack";
 import { ListCostumers } from "@screens/ListCostumers/listCostumers";
 import { CreateCostumer } from "@screens/CreateCostumer/createCostumer";
 
-const { Navigator, Screen } = createNativeStackNavigator();
-
 export type PrivateRoute = {
-  ListCostumer: undefined;
-  CreateCostumers: undefined;
+  Clientes: undefined;
+  "Criar Cliente": undefined;
 };
 
-export type PrivateRoutes = NativeStackNavigationProp<PrivateRoute>;
+export type StackNavigatorRoutesProps = NativeStackNavigationProp<PrivateRoute>;
+
+const { Navigator, Screen } = createNativeStackNavigator<PrivateRoute>();
 
 export function PrivateRoute() {
   return (
-    <Navigator screenOptions={{ headerShown: false }}>
-      <Screen name="ListCostumers" component={ListCostumers}></Screen>
-      <Screen name="CreateCostumers" component={CreateCostumer}></Screen>
+    <Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Clientes"
+    >
+      <Screen name="Clientes" component={ListCostumers}></Screen>
+      <Screen name="Criar Cliente" component={CreateCostumer}></Screen>
     </Navigator>
   );
 }
