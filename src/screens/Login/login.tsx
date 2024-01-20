@@ -67,6 +67,7 @@ export function Login() {
           <CustomButton
             onPress={() => sendLogin()}
             width="75.2%"
+            text="Entrar"
           ></CustomButton>
         </Wrapper>
       </LoginDetailsContainer>
@@ -79,6 +80,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#FFF",
     width: "100%",
   },
 });
