@@ -1,0 +1,19 @@
+<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="22" height="22" fill="#1E1E1E"/>
+<g id="Cadastro Clientes">
+<rect width="393" height="852" transform="translate(-15 -68)" fill="white"/>
+<g id="Group 25">
+<rect id="background" x="-15" y="-12" width="393" height="46" fill="#F5F5F5"/>
+<g id="Frame" clip-path="url(#clip0_0_1)">
+<g id="Group">
+<path id="Vector" d="M16.2929 19.7464C16.6834 19.3559 16.6834 18.7228 16.2929 18.3322L9.46004 11.4994C9.06952 11.1089 9.06952 10.4757 9.46004 10.0852L16.2929 3.2523C16.6834 2.86178 16.6834 2.22862 16.2929 1.8381L15.162 0.707131C14.7715 0.316595 14.1383 0.31659 13.7478 0.707119L4.36972 10.0852C3.97919 10.4757 3.97919 11.1089 4.36972 11.4994L13.7478 20.8774C14.1383 21.268 14.7715 21.2679 15.162 20.8774L16.2929 19.7464Z" fill="#0914D6"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_1">
+<rect width="22" height="22" fill="white" transform="translate(22) rotate(90)"/>
+</clipPath>
+</defs>
+</svg>
