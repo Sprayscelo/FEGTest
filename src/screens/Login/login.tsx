@@ -12,20 +12,23 @@ import { useAuth } from "@hooks/useAuth";
 
 import validator from "validator";
 
+import { Ionicons } from "@expo/vector-icons";
+import EyeHide from "@assets/EyeHide.svg";
+
+import theme from "@theme/theme";
+
 export function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(true);
+
   const { isEmail } = validator;
 
   const { login } = useAuth();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const sendLogin = () => {
     if (!email || !isEmail(email)) {
-      return Alert.alert(
-        "Usuário invalido",
-        "Por favor digite um email válido"
-      );
+      return Alert.alert("Email invalido", "Por favor digite um email válido");
     }
 
     if (!password) {
@@ -46,24 +49,44 @@ export function Login() {
     <View style={styles.container}>
       <Logo />
       <LoginDetailsContainer>
-        <Wrapper styles="margin-bottom: 5px">
+        <Wrapper style={{ marginBottom: 5 }}>
           <CustomText text="Acesse sua conta" color="#4E4E4E" fontSize="16px" />
         </Wrapper>
-        <Wrapper styles="gap: 15px">
+        <Wrapper style={{ gap: 15 }}>
           <CustomInput
             value={email}
             onChangeText={(value) => setEmail(value)}
             width="75.2%"
             placeholder="Digite seu e-mail"
           ></CustomInput>
-          <CustomInput
-            value={password}
-            onChangeText={(value) => setPassword(value)}
-            width="75.2%"
-            placeholder="Digite sua senha"
-          ></CustomInput>
+          <Wrapper style={{ flexDirection: "row" }}>
+            <CustomInput
+              value={password}
+              onChangeText={(value) => setPassword(value)}
+              width="75.2%"
+              placeholder="Digite sua senha"
+              secureTextEntry={isPasswordVisible}
+            ></CustomInput>
+            {!isPasswordVisible ? (
+              <Ionicons
+                name="eye"
+                size={16.825}
+                color={theme.colors.primary}
+                style={styles.icon}
+                onPress={() => setIsPasswordVisible(!isPasswordVisible)}
+              />
+            ) : (
+              <EyeHide
+                width={20}
+                height={16.825}
+                color={theme.colors.primary}
+                style={styles.icon}
+                onPress={() => setIsPasswordVisible(!isPasswordVisible)}
+              />
+            )}
+          </Wrapper>
         </Wrapper>
-        <Wrapper styles="margin-top: 37px">
+        <Wrapper style={{ marginTop: 37 }}>
           <CustomButton
             onPress={() => sendLogin()}
             width="75.2%"
@@ -82,5 +105,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#FFF",
     width: "100%",
+  },
+  icon: {
+    position: "absolute",
+    right: 65,
   },
 });

@@ -8,10 +8,10 @@ export const LoginDetailsContainer = styled.View`
   width: 100%;
 `;
 
-export const Wrapper = styled.View<{ styles?: string }>`
+export const Wrapper = styled.View`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   width: 100%;
-  ${({ styles }) => styles}
 `;
