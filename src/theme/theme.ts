@@ -2,6 +2,7 @@ export default {
   colors: {
     primary: "#0914D6",
     secondary: "#FFF",
+    text: "#4E4E4E",
     inputBorderColor: "#E7E7E7",
     headerColor: "#F5F5F5",
   },
