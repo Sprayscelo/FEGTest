@@ -3,8 +3,8 @@ import {
   NativeStackNavigationProp,
   createNativeStackNavigator,
 } from "@react-navigation/native-stack";
-import { ListCustomers } from "@screens/ListCustomers/listCustomers";
-import { CreateCustomer } from "@screens/CreateCustomer/createCustomer";
+import { ListCustomers } from "@screens/ListCustomers/ListCustomers";
+import { CreateCustomer } from "@screens/CreateCustomer/CreateCustomer";
 
 export type PrivateRoute = {
   Clientes: undefined;

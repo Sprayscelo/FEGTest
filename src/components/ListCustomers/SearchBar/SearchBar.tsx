@@ -6,8 +6,8 @@ import Search from "@assets/Search.svg";
 export function SearchBar({ ...props }: TextInputProps) {
   return (
     <SearchBarContainer>
-      <Search></Search>
-      <TextInput style={{ width: "100%" }} {...props}></TextInput>
+      <Search />
+      <TextInput style={{ width: "100%" }} {...props} />
     </SearchBarContainer>
   );
 }

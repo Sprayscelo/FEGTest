@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import theme from "@theme/theme";
 
-import { Loading } from "@components/Loading/loading";
+import { Loading } from "@components/Loading/Loading";
 
 import { Routes } from "@routes/index";
 

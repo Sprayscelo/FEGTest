@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { View, StyleSheet, Alert } from "react-native";
 
-import { Logo } from "@components/Logo/logo";
-import { CustomText } from "@components/Text/text";
-import { CustomInput } from "@components/Input/styles";
-import { CustomButton } from "@components/Button/button";
+import { Logo } from "@components/Logo/Logo";
+import { CustomText } from "@components/CustomText/CustomText";
+import { CustomInput } from "@components/CustomInput/styles";
+import { CustomButton } from "@components/CustomButton/CustomButton";
 
 import { LoginDetailsContainer, Wrapper } from "./style";
 
@@ -58,7 +58,7 @@ export function Login() {
             onChangeText={(value) => setEmail(value)}
             width="75.2%"
             placeholder="Digite seu e-mail"
-          ></CustomInput>
+          />
           <Wrapper style={{ flexDirection: "row" }}>
             <CustomInput
               value={password}
@@ -66,7 +66,7 @@ export function Login() {
               width="75.2%"
               placeholder="Digite sua senha"
               secureTextEntry={isPasswordVisible}
-            ></CustomInput>
+            />
             {!isPasswordVisible ? (
               <Ionicons
                 name="eye"
@@ -91,7 +91,7 @@ export function Login() {
             onPress={() => sendLogin()}
             width="75.2%"
             text="Entrar"
-          ></CustomButton>
+          />
         </Wrapper>
       </LoginDetailsContainer>
     </View>

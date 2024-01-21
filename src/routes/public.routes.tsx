@@ -3,7 +3,7 @@ import {
   createNativeStackNavigator,
   NativeStackNavigationProp,
 } from "@react-navigation/native-stack";
-import { Login } from "@screens/Login/login";
+import { Login } from "@screens/Login/Login";
 
 export type PublicRoute = {
   Login: undefined;

@@ -1,6 +1,6 @@
 import Toast from "react-native-toast-message";
 
-import { type CustomerProps } from "@components/ListCostumers/Costumer/costumer";
+import { type CustomerProps } from "@components/ListCustomers/Customer/Customer";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 

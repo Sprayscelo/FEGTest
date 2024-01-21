@@ -5,7 +5,5 @@ interface InputProps {
 }
 
 export function Input({ width }: InputProps) {
-  return (
-    <CustomInput placeholderTextColor="#2D2D2D" width={width}></CustomInput>
-  );
+  return <CustomInput placeholderTextColor="#2D2D2D" width={width} />;
 }

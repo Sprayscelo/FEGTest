@@ -1,5 +1,5 @@
-import { Header } from "@components/Header/header";
-import { CustomText } from "@components/Text/text";
+import { Header } from "@components/Header/Header";
+import { CustomText } from "@components/CustomText/CustomText";
 
 import {
   CreateCostumerContainer,
@@ -8,8 +8,8 @@ import {
   Wrapper,
   WrapperButton,
 } from "./style";
-import { CustomInput } from "@components/Input/styles";
-import { CustomButton } from "@components/Button/button";
+import { CustomInput } from "@components/CustomInput/styles";
+import { CustomButton } from "@components/CustomButton/CustomButton";
 import { CustomerService } from "@service/LocalDatabaseService";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigatorRoutesProps } from "@routes/private.routes";
@@ -44,17 +44,17 @@ export function CreateCustomer() {
 
   return (
     <CreateCostumerContainer style={{ flex: 1 }}>
-      <Header></Header>
+      <Header />
       <TitleContainer>
         <CustomText
           fontWeight={600}
           fontSize="16px"
           text={"Informações do cliente"}
-        ></CustomText>
+        />
       </TitleContainer>
       <DetailsContainer>
         <Wrapper>
-          <CustomText fontSize="16px" color="#000" text={"Nome"}></CustomText>
+          <CustomText fontSize="16px" color="#000" text={"Nome"} />
           <CustomInput
             value={name}
             onChangeText={(value) => setName(value)}
@@ -62,10 +62,10 @@ export function CreateCustomer() {
             inputMode="text"
             width="100%"
             style={{ paddingTop: 13, paddingBottom: 10, paddingLeft: 15 }}
-          ></CustomInput>
+          />
         </Wrapper>
         <Wrapper>
-          <CustomText fontSize="16px" color="#000" text={"CPF"}></CustomText>
+          <CustomText fontSize="16px" color="#000" text={"CPF"} />
           <CustomInput
             value={cpf}
             onChangeText={(value) => setCpf(value)}
@@ -74,7 +74,7 @@ export function CreateCustomer() {
             inputMode="numeric"
             width="100%"
             style={{ paddingTop: 13, paddingBottom: 10, paddingLeft: 15 }}
-          ></CustomInput>
+          />
         </Wrapper>
       </DetailsContainer>
       <WrapperButton style={{ flex: 2 }}>
@@ -82,7 +82,7 @@ export function CreateCustomer() {
           onPress={() => createCustomer()}
           text={"Cadastrar"}
           width="100%"
-        ></CustomButton>
+        />
       </WrapperButton>
     </CreateCostumerContainer>
   );

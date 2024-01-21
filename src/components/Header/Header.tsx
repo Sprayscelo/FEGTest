@@ -8,7 +8,7 @@ import { HeaderContainer, Wrapper } from "./styles";
 
 import Frame from "@assets/Frame.svg";
 
-import { CustomText } from "@components/Text/text";
+import { CustomText } from "@components/CustomText/CustomText";
 import { StackNavigatorRoutesProps } from "@routes/private.routes";
 import { TouchableOpacity } from "react-native";
 import theme from "@theme/theme";
@@ -33,7 +33,7 @@ export function Header() {
         fontSize="14px"
         color="#4E4E4E"
         fontWeight={600}
-      ></CustomText>
+      />
       <MaterialIcons
         name="logout"
         size={24}

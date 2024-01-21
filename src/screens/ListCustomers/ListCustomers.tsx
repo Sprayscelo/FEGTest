@@ -4,14 +4,14 @@ import { FlatList, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigatorRoutesProps } from "@routes/private.routes";
 
-import { Header } from "@components/Header/header";
+import { Header } from "@components/Header/Header";
 import {
   Customer,
   CustomerProps,
-} from "@components/ListCustomers/Customer/customer";
-import { SearchBar } from "@components/ListCustomers/SearchBar/searchBar";
+} from "@components/ListCustomers/Customer/Customer";
+import { SearchBar } from "@components/ListCustomers/SearchBar/SearchBar";
 import { AddButtonContainer } from "@components/ListCustomers/Customer/style";
-import { CustomText } from "@components/Text/text";
+import { CustomText } from "@components/CustomText/CustomText";
 
 import { NoContent } from "./style";
 
@@ -64,7 +64,7 @@ export function ListCustomers() {
       <Header></Header>
       <SearchBar
         value={searchValue}
-        onChangeText={(value) => handleSearch(value)}
+        onChangeText={(value: string) => handleSearch(value)}
       ></SearchBar>
       {filteredCustomers.length === 0 && searchValue ? (
         <NoContent>
@@ -72,7 +72,7 @@ export function ListCustomers() {
             text="Nenhum contato encontrado!"
             fontSize="16px"
             fontWeight={600}
-          ></CustomText>
+          />
         </NoContent>
       ) : (
         <FlatList
@@ -81,7 +81,7 @@ export function ListCustomers() {
             <Customer cpf={item.cpf} name={item.name} id={item.id}></Customer>
           )}
           contentContainerStyle={{ backgroundColor: "white" }}
-        ></FlatList>
+        />
       )}
       <AddButtonContainer onPress={() => navigation.navigate("Criar Cliente")}>
         <CustomText
@@ -92,7 +92,7 @@ export function ListCustomers() {
           text="+"
           fontSize="36.878px"
           color="#FFF"
-        ></CustomText>
+        />
       </AddButtonContainer>
     </View>
   );

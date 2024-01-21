@@ -1,4 +1,4 @@
-import { CustomText } from "@components/Text/text";
+import { CustomText } from "@components/CustomText/CustomText";
 
 import Group from "@assets/Group.svg";
 import Circle from "@assets/Circle.svg";
@@ -15,16 +15,16 @@ export function Customer({ id, name, cpf }: CustomerProps) {
   return (
     <CustomerContainer>
       <UserImageWrapper>
-        <Circle style={{ position: "absolute" }}></Circle>
-        <Group></Group>
+        <Circle style={{ position: "absolute" }} />
+        <Group />
       </UserImageWrapper>
       <Wrapper>
-        <CustomText fontSize="14px" text={name}></CustomText>
+        <CustomText fontSize="14px" text={name} />
         <CustomText
           style={{ lineHeight: 16, opacity: 0.5 }}
           fontSize="12px"
           text={cpf}
-        ></CustomText>
+        />
       </Wrapper>
     </CustomerContainer>
   );
