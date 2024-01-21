@@ -1,5 +1,4 @@
 import { StatusBar } from "react-native";
-import { StyleSheet } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 
@@ -17,6 +16,7 @@ import {
   Poppins_400Regular,
   Poppins_600SemiBold,
 } from "@expo-google-fonts/poppins";
+import Toast from "react-native-toast-message";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -28,20 +28,14 @@ export default function App() {
   return !fontsLoaded ? (
     <Loading color={theme.colors.primary} size={60} />
   ) : (
-    <NavigationContainer>
-      <StatusBar backgroundColor={"#fff"} barStyle={"dark-content"} />
-      <AuthProvider>
-        <Routes />
-      </AuthProvider>
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <StatusBar backgroundColor={"#fff"} barStyle={"dark-content"} />
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
+      </NavigationContainer>
+      <Toast />
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
