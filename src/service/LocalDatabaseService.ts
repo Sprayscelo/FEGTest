@@ -16,11 +16,16 @@ class CustomerDatabase {
   }
 
   public async initializeDatabase(): Promise<void> {
-    const getCustomers = JSON.parse((await getItem(this.DataBaseName)) ?? "[]");
-    if (!getCustomers) {
-      setItem(this.DataBaseName, JSON.stringify([]));
-    } else {
-      this.Customers = JSON.parse((await getItem(this.DataBaseName)) ?? "[]");
+    try {
+      const storedData = await getItem(this.DataBaseName);
+      this.Customers = JSON.parse(storedData ?? "[]");
+
+      if (!Array.isArray(this.Customers)) {
+        this.Customers = [];
+        await setItem(this.DataBaseName, JSON.stringify(this.Customers));
+      }
+    } catch (error) {
+      console.error("Erro ao inicializar o banco de dados:", error);
     }
   }
 
@@ -33,29 +38,38 @@ class CustomerDatabase {
   }
 
   public async insert(newCpf: string, name: string): Promise<boolean> {
-    if (this.Customers.some(({ cpf }) => cpf === newCpf)) {
+    try {
+      if (this.Customers.some(({ cpf }) => cpf === newCpf)) {
+        Toast.show({
+          type: "error",
+          text1: "CPF já cadastrado!",
+        });
+        return false;
+      }
+      const id = this.createId();
+
+      this.Customers.push({ id, cpf: newCpf, name });
+
+      await setItem(this.DataBaseName, JSON.stringify(this.Customers));
+
       Toast.show({
-        type: "error",
-        text1: "CPF já cadastrado!",
+        type: "success",
+        text1: "Cliente cadastrado com sucess!",
       });
+
+      return true;
+    } catch (erro) {
+      console.log("Erro ao criar inserir novo cliente: " + erro);
       return false;
     }
-    const id = this.createId();
-
-    this.Customers.push({ id, cpf: newCpf, name });
-
-    await setItem(this.DataBaseName, JSON.stringify(this.Customers));
-
-    Toast.show({
-      type: "success",
-      text1: "Cliente cadastrado com sucess!",
-    });
-
-    return true;
   }
 
   public async clearAll() {
-    await removeItem(this.DataBaseName);
+    try {
+      await removeItem(this.DataBaseName);
+    } catch (erro) {
+      console.log("Erro ao limpar clientes: " + erro);
+    }
   }
 }
 
