@@ -3,8 +3,8 @@ import {
   NativeStackNavigationProp,
   createNativeStackNavigator,
 } from "@react-navigation/native-stack";
-import { ListCostumers } from "@screens/ListCostumers/listCostumers";
-import { CreateCostumer } from "@screens/CreateCostumer/createCostumer";
+import { ListCustomers } from "@screens/ListCustomers/listCustomers";
+import { CreateCustomer } from "@screens/CreateCustomer/createCustomer";
 
 export type PrivateRoute = {
   Clientes: undefined;
@@ -21,8 +21,8 @@ export function PrivateRoute() {
       screenOptions={{ headerShown: false }}
       initialRouteName="Clientes"
     >
-      <Screen name="Clientes" component={ListCostumers}></Screen>
-      <Screen name="Criar Cliente" component={CreateCostumer}></Screen>
+      <Screen name="Clientes" component={ListCustomers}></Screen>
+      <Screen name="Criar Cliente" component={CreateCustomer}></Screen>
     </Navigator>
   );
 }
