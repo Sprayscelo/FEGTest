@@ -1,8 +1,8 @@
 import { TextProps } from "react-native";
 import { Text } from "./style";
-
+import theme from "@theme/theme";
 interface CustomTextProps extends TextProps {
-  color: string;
+  color?: string;
   fontSize: string;
   text: string;
   fontWeight?: number;
@@ -16,7 +16,12 @@ export function CustomText({
   ...props
 }: CustomTextProps) {
   return (
-    <Text color={color} fontSize={fontSize} fontWeight={fontWeight} {...props}>
+    <Text
+      color={color ?? theme.colors.text}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      {...props}
+    >
       {text}
     </Text>
   );
