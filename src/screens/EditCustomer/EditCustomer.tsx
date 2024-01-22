@@ -30,13 +30,13 @@ export function EditCustomer() {
   const [newName, setNewName] = useState(name);
 
   const editCustomer = async () => {
-    if (!cpf) {
+    if (!newCpf) {
       return Alert.alert("CPF inválido", "Por favor preencha o campo CPF");
     }
-    if (!formatCPF(cpf)) {
+    if (!formatCPF(newCpf)) {
       return Alert.alert("CPF inválido", "Por favor preencha um CPF válido!");
     }
-    if (!name) {
+    if (!newName) {
       return Alert.alert("Nome inválido", "Por favor preencha o campo NOME");
     }
 
