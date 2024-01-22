@@ -3,7 +3,21 @@ import { CustomText } from "@components/CustomText/CustomText";
 import Group from "@assets/Group.svg";
 import Circle from "@assets/Circle.svg";
 
-import { CustomerContainer, UserImageWrapper, Wrapper } from "./style";
+import { MaterialIcons } from "@expo/vector-icons";
+
+import {
+  CustomerContainer,
+  EditButton,
+  UserImageWrapper,
+  Wrapper,
+} from "./style";
+import theme from "@theme/theme";
+
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigatorRoutesProps } from "@routes/private.routes";
+import { StyleSheet } from "react-native";
+import { CustomerService } from "@service/LocalDatabaseService";
+import { removeAlert } from "@utils/removeAlert";
 
 export type CustomerProps = {
   id: number;
@@ -12,8 +26,16 @@ export type CustomerProps = {
 };
 
 export function Customer({ id, name, cpf }: CustomerProps) {
+  const navigation = useNavigation<StackNavigatorRoutesProps>();
+
+  const removeCustomer = async () => {
+    const deleteCustomer = await CustomerService.delete(id);
+  };
+
   return (
-    <CustomerContainer>
+    <CustomerContainer
+      onPress={() => navigation.navigate("Editar Cliente", { id, name, cpf })}
+    >
       <UserImageWrapper>
         <Circle style={{ position: "absolute" }} />
         <Group />
@@ -26,6 +48,21 @@ export function Customer({ id, name, cpf }: CustomerProps) {
           text={cpf}
         />
       </Wrapper>
+      <EditButton>
+        <MaterialIcons
+          style={styles.icon}
+          name="delete"
+          size={20}
+          color="red"
+          onPress={() => removeAlert(name, removeCustomer)}
+        />
+      </EditButton>
     </CustomerContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  icon: {
+    padding: 5,
+  },
+});

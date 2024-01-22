@@ -1,7 +1,7 @@
 import theme from "@theme/theme";
 import styled from "styled-components/native";
 
-export const CustomerContainer = styled.View`
+export const CustomerContainer = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   gap: 5px;
@@ -41,4 +41,11 @@ export const AddButtonContainer = styled.TouchableOpacity`
   border: 1.36px solid ${theme.colors.inputBorderColor};
   margin-right: 10px;
   margin-bottom: 18px;
+`;
+
+export const EditButton = styled.View`
+  flex-grow: 1;
+  justify-content: center;
+  align-items: flex-end;
+  margin-right: 17px;
 `;

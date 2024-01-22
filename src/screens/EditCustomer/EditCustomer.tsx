@@ -11,22 +11,25 @@ import {
 import { CustomInput } from "@components/CustomInput/styles";
 import { CustomButton } from "@components/CustomButton/CustomButton";
 import { CustomerService } from "@service/LocalDatabaseService";
-
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { StackNavigatorRoutesProps } from "@routes/private.routes";
-
 import { useState } from "react";
 import { Alert } from "react-native";
 
 import formatCPF from "@utils/validateCpf";
+import { CustomerProps } from "@components/ListCustomers/Customer/Customer";
+import { removeAlert } from "@utils/removeAlert";
 
-export function CreateCustomer() {
+export function EditCustomer() {
   const navigation = useNavigation<StackNavigatorRoutesProps>();
+  const route = useRoute();
 
-  const [cpf, setCpf] = useState("");
-  const [name, setName] = useState("");
+  const { id, name, cpf } = route.params as CustomerProps;
 
-  const createCustomer = async () => {
+  const [newCpf, setNewCpf] = useState(cpf);
+  const [newName, setNewName] = useState(name);
+
+  const editCustomer = async () => {
     if (!cpf) {
       return Alert.alert("CPF inválido", "Por favor preencha o campo CPF");
     }
@@ -37,9 +40,21 @@ export function CreateCustomer() {
       return Alert.alert("Nome inválido", "Por favor preencha o campo NOME");
     }
 
-    const insertCustomer = await CustomerService.insert(cpf, name);
+    const updateCustomer = await CustomerService.update({
+      id,
+      cpf: newCpf,
+      name: newName,
+    });
 
-    if (!insertCustomer) return;
+    if (!updateCustomer) return;
+
+    navigation.navigate("Clientes");
+  };
+
+  const removeCustomer = async () => {
+    const removeCustomer = await CustomerService.delete(id);
+
+    if (!removeCustomer) return;
 
     navigation.navigate("Clientes");
   };
@@ -58,8 +73,8 @@ export function CreateCustomer() {
         <Wrapper>
           <CustomText fontSize="16px" color="#000" text={"Nome"} />
           <CustomInput
-            value={name}
-            onChangeText={(value) => setName(value)}
+            value={newName}
+            onChangeText={(value) => setNewName(value)}
             placeholder="Digite o nome ou razão social"
             inputMode="text"
             width="100%"
@@ -69,8 +84,8 @@ export function CreateCustomer() {
         <Wrapper>
           <CustomText fontSize="16px" color="#000" text={"CPF"} />
           <CustomInput
-            value={cpf}
-            onChangeText={(value) => setCpf(value)}
+            value={newCpf}
+            onChangeText={(value) => setNewCpf(value)}
             placeholder="000.000.000-00"
             keyboardType="numeric"
             inputMode="numeric"
@@ -81,9 +96,15 @@ export function CreateCustomer() {
       </DetailsContainer>
       <WrapperButton style={{ flex: 2 }}>
         <CustomButton
-          onPress={() => createCustomer()}
-          text={"Cadastrar"}
-          width="100%"
+          onPress={() => editCustomer()}
+          text={"Salvar"}
+          width="45%"
+        />
+        <CustomButton
+          onPress={() => removeAlert(name, removeCustomer)}
+          text={"Excluir"}
+          width="45%"
+          color="red"
         />
       </WrapperButton>
     </CreateCostumerContainer>

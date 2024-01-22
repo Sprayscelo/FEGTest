@@ -14,4 +14,5 @@ export const Button = styled.TouchableOpacity<{
   width: ${({ width }) => width};
   padding-top: 12px;
   padding-bottom: 9px;
+  height: 48px;
 `;

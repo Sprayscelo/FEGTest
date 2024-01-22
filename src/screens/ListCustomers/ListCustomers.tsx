@@ -35,10 +35,10 @@ export function ListCustomers() {
 
   useEffect(() => {
     initializeDB();
-    console.log(CustomerService.Customers);
   }, []);
 
   useEffect(() => {
+    initializeDB();
     setCustomers(CustomerService.Customers);
   }, [CustomerService.Customers]);
 
